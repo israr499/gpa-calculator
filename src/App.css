@@ -160,5 +160,17 @@ body {
 }
 
 .add-button.delete {
-    background-color: #dc3545; /* Red for clear button */
+    background-color: #47292c; /* Red for clear button */
+}
+.delete-button {
+  background: #111010;
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.delete-button:hover {
+  background: #360303;
 }

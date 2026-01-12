@@ -36,6 +36,10 @@ function App() {
       setCgpaSemesters(JSON.parse(savedData));
     }
   }, []);
+  const removeCourse = (index) => {
+  const updated = courses.filter((_, i) => i !== index);
+  setCourses(updated);
+  };
 
   // Save data whenever cgpaSemesters changes
   useEffect(() => {
@@ -49,7 +53,7 @@ function App() {
       setCgpaResult(null);
     }
   };
-
+  
   /* ================= FEATURE 3: PDF EXPORT ================= */
   const exportPDF = (type) => {
     const doc = new jsPDF();
@@ -206,46 +210,62 @@ function App() {
       )}
 
       {/* GPA INPUT */}
-      {step === 3 && (
-        <div className="calculator-view">
-          <h1>GPA Calculator</h1>
-          <button className="add-button" onClick={addCourse}>
-            + Add Course
-          </button>
+{step === 3 && (
+  <div className="calculator-view">
+    <h1>GPA Calculator</h1>
 
-          {courses.length > 0 && (
-            <form onSubmit={handleCalculate} className="form-container">
-              {courses.map((c, i) => (
-                <div key={i} className="course-row">
-                  <input
-                    placeholder="Course Title"
-                    value={c.title}
-                    onChange={e => handleChange(i, 'title', e.target.value)}
-                    required
-                  />
-                  <input
-                    type="number"
-                    placeholder="Credits"
-                    value={c.credit}
-                    onChange={e => handleChange(i, 'credit', e.target.value)}
-                    required
-                  />
-                  <input
-                    type="number"
-                    placeholder="Marks"
-                    value={c.marks}
-                    onChange={e => handleChange(i, 'marks', e.target.value)}
-                    required
-                  />
-                </div>
-              ))}
-              <button type="submit" className="primary-button">
-                Calculate Result
-              </button>
-            </form>
-          )}
-        </div>
-      )}
+    <button className="add-button" onClick={addCourse}>
+      + Add Course
+    </button>
+
+    {courses.length > 0 && (
+      <form onSubmit={handleCalculate} className="form-container">
+        {courses.map((c, i) => (
+          <div key={i} className="course-row">
+            
+            <input
+              placeholder="Course Title"
+              value={c.title}
+              onChange={e => handleChange(i, 'title', e.target.value)}
+              required
+            />
+
+            <input
+              type="number"
+              placeholder="Credits"
+              value={c.credit}
+              onChange={e => handleChange(i, 'credit', e.target.value)}
+              required
+            />
+
+            <input
+              type="number"
+              placeholder="Marks"
+              value={c.marks}
+              onChange={e => handleChange(i, 'marks', e.target.value)}
+              required
+            />
+
+            {/* ❌ DELETE COURSE BUTTON */}
+            <button
+              type="button"
+              className="delete-button"
+              onClick={() => removeCourse(i)}
+            >
+              ❌
+            </button>
+
+          </div>
+        ))}
+
+        <button type="submit" className="primary-button">
+          Calculate Result
+        </button>
+      </form>
+    )}
+  </div>
+)}
+
 
       {/* GPA RESULT */}
       {step === 4 && results && (
