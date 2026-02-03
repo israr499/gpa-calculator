@@ -1,32 +1,39 @@
-/* src/App.css */
-
-/* Base resets & font */
+/* ===========================
+   RESET & BASE
+=========================== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #333;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
+  color: #333;
 }
 
-/* Card container centered */
+/* ===========================
+   MAIN CARD
+=========================== */
 .app-container {
-  background: #fff;
-  width: 600px;
+  background: #ffffff;
+  width: 100%;
+  max-width: 600px;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
 
-/* View wrappers */
+/* ===========================
+   VIEW WRAPPERS
+=========================== */
 .landing,
 .scheme-view,
 .calculator-view,
@@ -34,143 +41,184 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
+
 .landing p {
   margin: 1rem 0;
   font-size: 1.1rem;
 }
 
-/* Primary button */
+/* ===========================
+   BUTTONS
+=========================== */
+.primary-button,
+.add-button,
+.submit-button,
+.action-button,
+.delete-button {
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
 .primary-button,
 .add-button,
 .submit-button {
   background: #667eea;
   color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.1s;
-  margin-top: 1rem;
 }
+
 .primary-button:hover,
 .add-button:hover,
 .submit-button:hover {
   background: #5a67d8;
-  transform: translateY(-1px);
-}
-.primary-button:active,
-.add-button:active,
-.submit-button:active {
-  transform: translateY(0);
 }
 
-/* Grading scheme table */
-.scheme-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-}
-.scheme-table th,
-.scheme-table td {
-  padding: 0.75rem 1rem;
-  border: 1px solid #ddd;
-}
-.scheme-table thead {
-  background: #f0f0f0;
-}
-.scheme-table tbody tr:nth-child(even) {
-  background: #fafafa;
-}
-.scheme-table tbody tr:hover {
-  background: #f5f5f5;
+.action-button {
+  background: #6c757d;
+  color: #fff;
 }
 
-/* Calculator form rows */
-.form-container {
-  width: 100%;
-  margin-top: 1rem;
+.action-button.success {
+  background: #28a745;
 }
-.course-row {
+
+.delete-button {
+  background: #111;
+  color: #fff;
+}
+
+.delete-button:hover {
+  background: #360303;
+}
+
+/* ===========================
+   BUTTON GROUP
+=========================== */
+.button-group {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  align-items: center;
-}
-.course-row input {
-  flex: 1;
-  padding: 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  transition: border-color 0.3s, box-shadow 0.3s;
-  min-width: 0;
-}
-.course-row input:nth-child(1) { flex: 2; }
-.course-row input:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-  outline: none;
+  gap: 10px;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-/* Results table */
+/* ===========================
+   TABLES
+=========================== */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.scheme-table,
 .results-table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
+  min-width: 500px;
 }
+
+.scheme-table th,
+.scheme-table td,
 .results-table th,
 .results-table td {
   padding: 0.75rem 1rem;
   border: 1px solid #ddd;
   text-align: left;
 }
+
+.scheme-table thead,
 .results-table thead {
   background: #f0f0f0;
 }
+
+.scheme-table tbody tr:nth-child(even),
 .results-table tbody tr:nth-child(even) {
   background: #fafafa;
 }
 
-/* Summary */
+/* ===========================
+   FORM / CALCULATOR
+=========================== */
+.form-container {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.course-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.course-row input {
+  flex: 1;
+  padding: 0.65rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.course-row input:first-child {
+  flex: 2;
+}
+
+.course-row input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* ===========================
+   SUMMARY
+=========================== */
 .summary p {
   font-weight: 500;
-  margin: 0.5rem 0;
+  margin: 0.4rem 0;
 }
 
-.button-group {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin: 20px 0;
+/* ===========================
+   RESPONSIVE BREAKPOINTS
+=========================== */
+@media (max-width: 768px) {
+  body {
+    align-items: flex-start;
+  }
+
+  .course-row {
+    flex-direction: column;
+  }
+
+  .course-row input {
+    width: 100%;
+  }
+
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
 }
 
-.action-button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #6c757d;
-  color: white;
-  font-weight: bold;
-}
+@media (max-width: 480px) {
+  .app-container {
+    padding: 1.25rem;
+  }
 
-.action-button.success {
-  background-color: #28a745; /* Green color for Save button */
-}
+  h1,
+  h2 {
+    font-size: 1.3rem;
+  }
 
-.add-button.delete {
-    background-color: #47292c; /* Red for clear button */
-}
-.delete-button {
-  background: #111010;
-  color: white;
-  border: none;
-  padding: 8px 10px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.delete-button:hover {
-  background: #360303;
+  p {
+    font-size: 0.95rem;
+  }
 }
